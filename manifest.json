@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "MRU Tab Switcher",
+  "version": "1.0.0",
+  "description": "Switches between open Chrome tabs in Most Recently Used (MRU) order using three keyboard shortcuts only.",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon.svg"
+  },
+  "commands": {
+    "quick-switch": {
+      "suggested_key": {
+        "default": "Alt+W",
+        "mac": "Alt+W"
+      },
+      "description": "Quick Switch (Toggle)"
+    },
+    "sequential-switch": {
+      "suggested_key": {
+        "default": "Alt+S",
+        "mac": "Alt+S"
+      },
+      "description": "Sequential Switch"
+    },
+    "reverse-switch": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "Reverse Switch"
+    }
+  }
+}
