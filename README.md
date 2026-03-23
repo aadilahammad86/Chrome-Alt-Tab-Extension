@@ -18,16 +18,6 @@ Since this extension is open-source and not hosted on the conventional Chrome We
 ### Step 2: Open Chrome's Extension Settings
 1. Open Google Chrome.
 2. Type `chrome://extensions/` into your URL bar and press **Enter**.
-*(Alternatively: Click the puzzle piece icon 🧩 in the top right of Chrome -> Click "Manage Extensions").*
-
-<p align="center">
-  <a href="javascript:void(0)" onclick="window.open('chrome://extensions')" style="display:inline-flex;align-items:center;gap:10px;background:#1a1a1a;color:#ffffff;font-weight:700;font-size:15px;padding:12px 24px;border-radius:10px;text-decoration:none;border:1px solid #444;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="#fff"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 3a3 3 0 0 1 2.6 1.5H12a4.5 4.5 0 0 0-4.5 4.5H5.1A7 7 0 0 1 12 5zm-7 7a7 7 0 0 1 .1-1h2.4A4.5 4.5 0 0 0 12 16.5v2.4A7 7 0 0 1 5 12zm7 7a7 7 0 0 1-1.9-.3l1.2-2.1a4.5 4.5 0 0 0 5.2-2.1h2.4A7 7 0 0 1 12 19zm4.5-6a4.5 4.5 0 0 0-1.9-3.7l1.2-2.1A7 7 0 0 1 19 12h-2.5z" fill="#4285F4"/></svg>
-    Open chrome://extensions
-  </a>
-</p>
-
-> **📋 Can't click the button?** Manually copy and paste this into your Chrome address bar:
 > ```
 > chrome://extensions
 > ```
