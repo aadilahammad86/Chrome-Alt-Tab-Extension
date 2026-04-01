@@ -8,7 +8,7 @@ The extension is entirely headless, operating via a **Manifest V3 Background Ser
 
 1. **`manifest.json`**: Explicitly maps our 3 shortcut commands and binds the worker.
 2. **`background.js`**: The brains of the operation where our logic lives.
-3. **`icon.svg`**: A lightweight, scalable vector graphic.
+3. **`icon.png`**: The primary extension icon (128x128 pixels).
 
 ---
 

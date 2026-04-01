@@ -1,70 +1,88 @@
-# 🚀 Chrome Alt Tab: MRU Switcher
+# 🚀 Chrome Alt-Tab: MRU Switcher
 
-Navigate your Chrome tabs blazingly fast using **Most Recently Used (MRU)** order—just like `Alt+Tab` on Windows or `Cmd+Tab` on Mac! 
+A powerful, privacy-first Chrome extension that brings the native **Most Recently Used (MRU)** tab switching experience (likened to Windows `Alt+Tab` or macOS `Cmd+Tab`) to your browser.
 
-This extension is completely **free and open-source**. Instead of charging users on the Chrome Web Store, we decided to host the code here publicly. Anyone can audit the privacy, read the code, and use it freely forever.
-
----
-
-## 📖 User Walkthrough: How to Install
-
-Since this extension is open-source and not hosted on the conventional Chrome Web Store, you will install it directly from your computer (called "sideloading"). **It takes less than 2 minutes!**
-
-### Step 1: Download the Code
-1. Click the green **"<> Code"** button near the top right of this repository page.
-2. Select **"Download ZIP"**.
-3. Extract (unzip) the downloaded file to a permanent folder on your computer (for example, `Documents/MRU-Tab-Switcher`).
-
-### Step 2: Open Chrome's Extension Settings
-1. Open Google Chrome.
-2. Type `chrome://extensions/` into your URL bar and press **Enter**.
-> ```
-> chrome://extensions
-> ```
-
-### Step 3: Enable Developer Mode
-
-<div style="background:#fff8e1;border-left:5px solid #f59e0b;border-radius:8px;padding:14px 18px;margin:12px 0;font-size:15px;">
-  👉 Once on the Extensions page, flip the <strong>Developer Mode</strong> toggle in the <strong>top-right corner</strong> to enable it. The toggle will turn <strong style="color:#1a73e8;">blue</strong> when it's on.
-</div>
-
-1. Look at the top right corner of the Extensions page.
-2. You will see a toggle switch labeled **Developer mode**. 
-3. Click it so it turns **ON** (the switch will turn blue).
-
-### Step 4: Load the Extension
-1. Once Developer mode is on, a **"Load unpacked"** button will appear in the top left. Click it!
-2. A file browser window will open. Select the folder where you extracted the ZIP file earlier. *(Make sure you select the exact folder that contains the `manifest.json` file).*
-3. **Done!** 🎉 The extension is now active. You will see "MRU Tab Switcher" in your extensions list.
+## 📖 Table of Contents
+- [Features](#-features)
+- [Installation](#-installation-developer-mode)
+- [Usage (Keyboard Shortcuts)](#-usage-keyboard-shortcuts)
+- [Customization](#-customization)
+  - [How to Update Extension Icon](#how-to-update-extension-icon)
+- [Troubleshooting](#-troubleshooting)
+  - [Environment PATH Reloading](#environment-path-reloading)
+- [Privacy & Security](#-privacy--security)
+- [Architecture & Development](#-architecture--development)
+- [License](#-license)
 
 ---
 
-## ⌨️ How to Use (Keyboard Shortcuts)
+## ✨ Features
+- **MRU Switching**: Cycle through tabs based on their last active time rather than their linear order in the tab bar.
+- **Service Worker Context**: Built using Manifest V3 for maximum performance and security.
+- **Zero-Latency Persistence**: Maintains history state even when the background process is suspended by the browser.
+- **Privacy Core**: No tracking, no data collection, and minimal permission requirements.
 
-By default, the following keyboard shortcuts are active immediately. *(Note: Mac users use the same keys natively!)*
+## 📥 Installation (Developer Mode)
 
-* 🔄 **`Alt + W` — Quick Switch (Toggle)** 
-  Jump back and forth between your **two** most recently used tabs. This is perfect for when you are referencing two documents at once and need to constantly flip between them.
-* ⏭️ **`Alt + S` — Sequential Switch** 
-  Cycle forward through your entire tab history.
-* ⏮️ **`Alt + Shift + S` — Reverse Switch** 
-  Cycle backward through your tab history.
+Since this extension is optimized for direct control and privacy, we recommend "sideloading" it using the "Load Unpacked" feature:
 
-### Want to change the shortcuts? 
-No problem at all! Chrome lets you remap them globally.
-1. Go to `chrome://extensions/shortcuts` in your browser.
-2. Scroll down to **"MRU Tab Switcher"**.
-3. Click the pencil icon next to any command and record your preferred shortcut!
+1. **Download the source**: Clone this repository or download the ZIP file and extract it.
+2. **Open Extensions**: Enter `chrome://extensions/` in your browser.
+3. **Enable Developer Mode**: Flip the toggle in the top-right corner.
+4. **Load**: Click **Load unpacked** and select the folder containing `manifest.json`.
+
+## ⌨️ Usage (Keyboard Shortcuts)
+
+| Shortcut | Command | Action |
+| :--- | :--- | :--- |
+| `Alt + W` | **Quick Switch** | Toggle between your 2 most recent tabs instantly. |
+| `Alt + S` | **Sequential Switch** | Cycle forward through your tab history. |
+| `Alt + Shift + S` | **Reverse Switch** | Cycle backward through your tab history. |
+
+> [!TIP]
+> You can remap these keys globally at `chrome://extensions/shortcuts`.
+
+## 🎨 Customization
+
+### How to Update Extension Icon
+
+To brand or update the visual identity of your extension, follow these standard steps:
+
+1. **Image Preparation**: Create a new icon image. Recommended dimensions are **128x128 pixels**.
+2. **Replacement**: Save your new icon as `icon.png` in the project root directory, overwriting the existing file.
+3. **Manifest Configuration**: Ensure that `manifest.json` correctly points to your file. By default, it is configured as follows:
+   ```json
+   "icons": {
+     "128": "icon.png"
+   },
+   "action": {
+     "default_icon": "icon.png"
+   }
+   ```
+4. **Apply Changes**: Go to `chrome://extensions/` and click the **Reload** icon on the extension card to refresh the assets.
+
+## 🔧 Troubleshooting
+
+### Environment PATH Reloading
+
+If you are developing for this extension or using related CLI tools and find that updates to your system `PATH` are not reflecting in your current terminal session (PowerShell), run the following command to force a refresh of the environment variables without restarting your shell:
+
+```powershell
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+            [System.Environment]::GetEnvironmentVariable("Path", "User")
+```
 
 ---
 
-## 🌐 GitHub Pages Website
-This repository is configured to easily host a free landing page via GitHub Pages. By enabling GitHub pages in your repo settings, this exact README will automatically render as a beautiful, professional website!
+## 🔒 Privacy & Security
+This extension follows a **Zero Host Permission** policy. We ONLY request access to:
+- `tabs`: To allow switching between IDs.
+- `storage`: Only for `chrome.storage.session` to maintain state across worker restarts.
 
----
+We cannot read page content, track your browsing history, or exfiltrate any data.
 
-## 💻 For Developers & Contributors
+## 💻 Architecture & Development
+For a deep dive into the technical implementation, state reconciliation logic, and Manifest V3 specifics, please refer to our **[Developer Walkthrough (DEVELOPER.md)](DEVELOPER.md)**.
 
-Want to understand how this works under the hood, verify its privacy, or contribute new features? 
-
-Check out our completely transparent **[Developer Guide (DEVELOPER.md)](DEVELOPER.md)** for a detailed walkthrough of the Manifest V3 architecture, zero-permission policy, and session storage logic.
+## 📜 License
+Distributed under the **MIT License**. See `LICENSE` for more information.
